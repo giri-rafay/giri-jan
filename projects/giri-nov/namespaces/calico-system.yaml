@@ -1,6 +1,8 @@
 apiVersion: infra.k8smgmt.io/v3
 kind: Namespace
 metadata:
+  annotations:
+    rafay.dev/description: ""
   labels:
     addonmanager.kubernetes.io/mode: EnsureExists
     control-plane: "true"
@@ -11,4 +13,6 @@ metadata:
     pod-security.kubernetes.io/enforce-version: latest
   name: calico-system
   project: giri-nov
-spec: {}
+spec:
+  namespaceMeshPolicyParams: {}
+  resourceQuotas: {}
