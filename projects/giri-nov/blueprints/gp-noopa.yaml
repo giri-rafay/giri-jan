@@ -4,6 +4,13 @@ metadata:
   name: gp-noopa
   project: giri-nov
 spec:
+  base:
+    name: minimal
+    version: 2.4.0
   driftWebhook:
     enabled: true
+  namespaceConfig:
+    enableSync: true
+    syncType: Unmanaged
   type: golden
+  version: v1
