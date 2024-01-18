@@ -1,0 +1,23 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Blueprint
+metadata:
+  name: c1
+  project: giri-nov
+spec:
+  base:
+    name: default
+    version: 2.4.0
+  defaultAddons:
+    enableIngress: true
+    enableMonitoring: true
+  driftWebhook:
+    enabled: true
+  opaPolicy:
+    opaPolicy:
+    - name: policy-privileged
+      version: version-1705555677
+    profile:
+      name: default
+      version: latest
+  type: custom
+  version: v1

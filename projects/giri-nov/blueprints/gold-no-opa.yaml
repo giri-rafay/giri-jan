@@ -4,6 +4,16 @@ metadata:
   name: gold-no-opa
   project: giri-nov
 spec:
+  base:
+    name: minimal
+    version: 2.4.0
+  customAddons:
+  - name: sample-app
+    version: v1
   driftWebhook:
     enabled: true
+  namespaceConfig:
+    enableSync: true
+    syncType: Unmanaged
   type: golden
+  version: v1
