@@ -1,0 +1,21 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Blueprint
+metadata:
+  name: opa-custom
+  project: giri-nov
+spec:
+  base:
+    name: opa-golden
+    version: v1
+  defaultAddons:
+    enableIngress: true
+    enableMonitoring: true
+    monitoring:
+      metricsServer:
+        customizationEnabled: true
+      prometheusAdapter:
+        customizationEnabled: true
+  driftWebhook:
+    enabled: true
+  type: custom
+  version: v1

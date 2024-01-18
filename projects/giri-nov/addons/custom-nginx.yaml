@@ -1,0 +1,15 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Addon
+metadata:
+  name: custom-nginx
+  project: giri-nov
+spec:
+  artifact:
+    artifact:
+      catalog: default-bitnami
+      chartName: nginx
+      chartVersion: 15.7.0
+    type: Helm
+  namespace: custom-nginx
+  sharing: {}
+  version: v1

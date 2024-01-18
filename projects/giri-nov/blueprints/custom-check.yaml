@@ -1,0 +1,24 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Blueprint
+metadata:
+  name: custom-check
+  project: giri-nov
+spec:
+  base:
+    name: system-pipeline
+    version: gold-v1
+  defaultAddons:
+    enableIngress: true
+    enableMonitoring: true
+    monitoring:
+      metricsServer:
+        customizationEnabled: true
+      prometheusAdapter:
+        customizationEnabled: true
+  driftWebhook:
+    enabled: true
+  namespaceConfig:
+    enableSync: true
+    syncType: Unmanaged
+  type: custom
+  version: v1

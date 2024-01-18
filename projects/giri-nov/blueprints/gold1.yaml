@@ -1,0 +1,17 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Blueprint
+metadata:
+  description: desc
+  name: gold1
+  project: giri-nov
+spec:
+  base:
+    name: minimal
+    version: 2.3.0
+  driftWebhook:
+    enabled: true
+  namespaceConfig:
+    enableSync: true
+    syncType: Unmanaged
+  type: golden
+  version: version1-unmanaged

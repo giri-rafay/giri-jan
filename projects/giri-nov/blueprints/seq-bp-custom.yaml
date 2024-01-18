@@ -1,0 +1,38 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Blueprint
+metadata:
+  description: v2-test
+  name: seq-bp-custom
+  project: giri-nov
+spec:
+  base:
+    name: seq-bp-golden
+    version: v1-unmanaged
+  customAddons:
+  - name: customised-system
+    version: v1
+  - name: custom-redis
+    version: v1
+  - dependsOn:
+    - custom-redis
+    name: custom-nginx
+    version: v1
+  - dependsOn:
+    - custom-nginx
+    name: custom-app
+    version: v1
+  defaultAddons:
+    enableIngress: true
+    enableMonitoring: true
+    monitoring:
+      metricsServer:
+        customizationEnabled: true
+      prometheusAdapter:
+        customizationEnabled: true
+  driftWebhook:
+    enabled: true
+  namespaceConfig:
+    enableSync: true
+    syncType: Unmanaged
+  type: custom
+  version: v2

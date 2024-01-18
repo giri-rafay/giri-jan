@@ -1,0 +1,20 @@
+apiVersion: apps.k8smgmt.io/v3
+kind: Workload
+metadata:
+  name: nginx-helm
+  project: giri-nov
+spec:
+  artifact:
+    artifact:
+      chartPath:
+        name: file://artifacts/nginx-helm/nginx-15.4.2.tgz
+      valuesPaths:
+      - name: file://artifacts/nginx-helm/values.yaml
+    options:
+      maxHistory: 10
+      timeout: 5m0s
+    type: Helm
+  namespace: nginx
+  placement:
+    selector: rafay.dev/clusterName=giri-dec28-demo2
+  version: nginx-helm-v2-202312280959090000

@@ -1,0 +1,31 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Blueprint
+metadata:
+  name: jan3-unmanaged
+  project: giri-nov
+spec:
+  base:
+    name: default-aks
+    version: 1.24.0
+  defaultAddons:
+    enableIngress: true
+    enableMonitoring: true
+    monitoring:
+      metricsServer:
+        customizationEnabled: true
+      prometheusAdapter:
+        customizationEnabled: true
+  driftWebhook:
+    enabled: true
+  namespaceConfig:
+    enableSync: true
+    syncType: Managed
+  networkPolicy:
+    policies:
+    - name: cp1
+      version: v1
+    profile:
+      name: default
+      version: latest
+  type: custom
+  version: new-cilium

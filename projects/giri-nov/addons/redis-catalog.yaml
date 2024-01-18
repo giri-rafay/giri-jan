@@ -1,0 +1,17 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Addon
+metadata:
+  name: redis-catalog
+  project: giri-nov
+spec:
+  artifact:
+    artifact:
+      catalog: default-bitnami
+      chartName: redis
+      chartVersion: 18.6.4
+      valuesPaths:
+      - name: file://artifacts/redis-catalog/values.yaml
+    type: Helm
+  namespace: redis
+  sharing: {}
+  version: v1

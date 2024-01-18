@@ -1,0 +1,14 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Addon
+metadata:
+  name: custom-redis
+  project: giri-nov
+spec:
+  artifact:
+    artifact:
+      chartPath:
+        name: file://artifacts/custom-redis/redis-15.6.4.tgz
+    type: Helm
+  namespace: custom-redis
+  sharing: {}
+  version: v1

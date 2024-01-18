@@ -1,0 +1,35 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Blueprint
+metadata:
+  name: opa-golden
+  project: giri-nov
+spec:
+  base:
+    name: default-aks
+    version: 2.4.0
+  defaultAddons:
+    enableIngress: true
+    enableMonitoring: true
+    monitoring:
+      metricsServer:
+        customizationEnabled: true
+      prometheusAdapter:
+        customizationEnabled: true
+  driftWebhook:
+    enabled: true
+  networkPolicy:
+    policies:
+    - name: pol1
+      version: v1
+    profile:
+      name: default
+      version: latest
+  opaPolicy:
+    opaPolicy:
+    - name: policy-privileged
+      version: version-1705482301
+    profile:
+      name: ram-profile-rctl1
+      version: v1-ram-ns1
+  type: golden
+  version: v1

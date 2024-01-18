@@ -1,0 +1,19 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Addon
+metadata:
+  name: new-custom
+  project: giri-nov
+spec:
+  artifact:
+    artifact:
+      configmap:
+        name: file://new-custom/alertmanager-configMap.yaml
+      configuration:
+        name: file://new-custom/alertmanager-configuration.yaml
+      secret:
+        name: file://new-custom/alertmanager-secret.yaml
+      statefulset:
+        name: file://new-custom/alertmanager-statefulSet.yaml
+    type: AlertManager
+  sharing: {}
+  version: v1

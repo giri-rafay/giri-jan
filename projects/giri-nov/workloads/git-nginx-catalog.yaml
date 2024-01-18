@@ -1,0 +1,21 @@
+apiVersion: apps.k8smgmt.io/v3
+kind: Workload
+metadata:
+  name: git-nginx-catalog
+  project: giri-nov
+spec:
+  artifact:
+    artifact:
+      catalog: default-bitnami
+      chartName: nginx
+      chartVersion: 15.5.1
+      valuesPaths:
+      - name: file://artifacts/nginx-catalog/values.yaml
+    options:
+      maxHistory: 10
+      timeout: 5m0s
+    type: Helm
+  namespace: git-catalog
+  placement:
+    selector: rafay.dev/clusterName=giri-dec28-demo1
+  version: nginx-catalog-v1-202312281007080000

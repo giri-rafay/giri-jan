@@ -1,0 +1,14 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Addon
+metadata:
+  name: sample-app
+  project: giri-nov
+spec:
+  artifact:
+    artifact:
+      paths:
+      - name: file://artifacts/sample-app/http-sw-app.yaml
+    type: Yaml
+  namespace: sample
+  sharing: {}
+  version: v1

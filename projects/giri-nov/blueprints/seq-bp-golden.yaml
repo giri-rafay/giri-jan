@@ -1,0 +1,72 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Blueprint
+metadata:
+  name: seq-bp-golden
+  project: giri-nov
+spec:
+  base:
+    name: default-aks
+    version: 2.4.0
+  costProfile:
+    name: default-cost-profile-azure
+    version: version-1705040658
+  customAddons:
+  - dependsOn:
+    - redis-catalog
+    name: nginx-upload
+    version: v1
+  - name: redis-catalog
+    version: v1
+  - dependsOn:
+    - nginx-upload
+    name: sample-app
+    version: v1
+  - name: customised-system
+    version: v1
+  defaultAddons:
+    enableIngress: true
+    enableMonitoring: true
+    monitoring:
+      metricsServer:
+        customizationEnabled: true
+      prometheusAdapter:
+        customizationEnabled: true
+  driftWebhook:
+    enabled: true
+  namespaceConfig:
+    enableSync: true
+    syncType: Unmanaged
+  networkPolicy:
+    policies:
+    - name: pol1
+      version: v1
+    - name: pol2
+      version: v1
+    - name: pol3
+      version: v1
+    - name: pol4
+      version: v1
+    - name: pol5
+      version: v1
+    - name: pol6
+      version: v1
+    - name: pol7
+      version: v1
+    - name: pol8
+      version: v1
+    - name: pol9
+      version: v1
+    - name: pol10
+      version: v1
+    profile:
+      name: default
+      version: latest
+  opaPolicy:
+    opaPolicy:
+    - name: policy-privileged
+      version: version-1705040658
+    profile:
+      name: default
+      version: latest
+  type: golden
+  version: v1-unmanaged

@@ -1,0 +1,20 @@
+apiVersion: infra.k8smgmt.io/v3
+kind: Addon
+metadata:
+  description: custom-alert-v2
+  name: cus-alert
+  project: giri-nov
+spec:
+  artifact:
+    artifact:
+      configmap:
+        name: file://cus-alert/alertmanager-configMap.yaml
+      configuration:
+        name: file://cus-alert/alertmanager-configuration.yaml
+      secret:
+        name: file://cus-alert/alertmanager-secret.yaml
+      statefulset:
+        name: file://cus-alert/alertmanager-statefulSet.yaml
+    type: AlertManager
+  sharing: {}
+  version: v2
