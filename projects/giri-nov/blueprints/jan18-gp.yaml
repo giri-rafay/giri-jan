@@ -4,6 +4,28 @@ metadata:
   name: jan18-gp
   project: giri-nov
 spec:
+  base:
+    name: default-aks
+    version: 2.4.0
+  defaultAddons:
+    enableIngress: true
+    enableMonitoring: true
+    monitoring:
+      metricsServer:
+        customizationEnabled: true
+      prometheusAdapter:
+        customizationEnabled: true
   driftWebhook:
     enabled: true
+  namespaceConfig:
+    enableSync: true
+    syncType: Unmanaged
+  opaPolicy:
+    opaPolicy:
+    - name: policy-privileged
+      version: version-1705555677
+    profile:
+      name: default
+      version: latest
   type: golden
+  version: v1
