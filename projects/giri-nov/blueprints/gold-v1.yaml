@@ -1,12 +1,12 @@
 apiVersion: infra.k8smgmt.io/v3
 kind: Blueprint
 metadata:
-  name: custom1
+  name: gold-v1
   project: giri-nov
 spec:
   base:
-    name: jan18-gp
-    version: v1
+    name: default-aks
+    version: 2.4.0
   defaultAddons:
     enableIngress: true
     enableMonitoring: true
@@ -17,8 +17,12 @@ spec:
         customizationEnabled: true
   driftWebhook:
     enabled: true
-  namespaceConfig:
-    enableSync: true
-    syncType: Unmanaged
-  type: custom
-  version: v2
+  opaPolicy:
+    opaPolicy:
+    - name: policy-restricted
+      version: version-1705640554
+    profile:
+      name: default
+      version: latest
+  type: golden
+  version: v1
