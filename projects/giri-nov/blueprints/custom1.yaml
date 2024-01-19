@@ -4,6 +4,21 @@ metadata:
   name: custom1
   project: giri-nov
 spec:
+  base:
+    name: jan18-gp
+    version: v1
+  defaultAddons:
+    enableIngress: true
+    enableMonitoring: true
+    monitoring:
+      metricsServer:
+        customizationEnabled: true
+      prometheusAdapter:
+        customizationEnabled: true
   driftWebhook:
     enabled: true
+  namespaceConfig:
+    enableSync: true
+    syncType: Unmanaged
   type: custom
+  version: v1
